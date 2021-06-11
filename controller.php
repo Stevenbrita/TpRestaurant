@@ -1,4 +1,5 @@
 <?php 
+
 require_once "DAO.php";
 require_once "Resto.php";
 
@@ -7,14 +8,53 @@ if(isset($_POST['submit'])){
     
     $name = $_POST['name'];
     $address = $_POST['address'];
-    $picture = $_POST['picture'];
     $type = $_POST['type'];
     $description = $_POST['description'];
 
-    $resto = new Resto($name, $address, $picture, $type, $description);
 
-    $resto->envoisDonnees($dsn,$user,$password);
+
+
+    if (isset($_FILES['picture']) && $_FILES['picture']['error'] == 0) {
+        echo "c'est bon";
+    }
+    
+    $target_dir = './uploads/';
+    
+   
+    $informationsImage = pathinfo($_FILES['picture']['name']);
+   
+    $extensionImage = strtolower($informationsImage['extension']);
+    
+    $target_file = $target_dir .  $lastname . "." .$extensionImage;
+    echo $target_file;
+    
+
+    if (move_uploaded_file($_FILES['picture']['tmp_name'], $target_file)) {
+        echo "The file ". basename( $_FILES["picture"]["name"]). " has been uploaded.";
+    } else {
+
+        echo "Sorry, there was an error uploading your file.";
+    }
+
+    $resto = new Resto() ;
+
+    $resto->setName($name);
+    $resto->setAddress($address);
+    $resto->setType($type);
+    $resto->setDescription($description);
+    $resto->setPicture($target_file );
+
+    
+
+    $resto->envoisDonnees($dsn, $user, $password);
+    header("Location: listResto.php");
+
+
 
 
 
 }
+
+
+
+
