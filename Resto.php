@@ -71,6 +71,7 @@ class Resto{
         $sth->bindParam(':description', $this->getDescription());
 
         $sth->execute();
+        header("Location: listResto.php");
     }
 
     public function recupDonnees($dsn,$user,$password){

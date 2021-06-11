@@ -1,7 +1,7 @@
 <?php 
-
-require_once "Resto.php";
 require_once "DAO.php";
+require_once "Resto.php";
+
 
 if(isset($_POST['submit'])){
     
