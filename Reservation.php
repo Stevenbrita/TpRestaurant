@@ -45,7 +45,7 @@ class Reservation {
     }
     
 
-    }
+    
 
 
     public function envoisDonnees($dsn,$user,$password){
@@ -96,3 +96,4 @@ class Reservation {
     }
 
 
+}
