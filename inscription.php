@@ -41,18 +41,18 @@ require_once 'header.inc.php';
 </form>   
 </div>
  
-        <button id="b1">toggle() Name</button>
-        <button id="b2">toggle() Firstname</button>
+        <button id="b1">toggle() name</button>
+        <button id="b2">toggle() firstname</button>
        
     $(document).ready(function(){
      
     $("#b1").click(function(){
-        $("h1").toggle();
+        $("name").toggle();
     });
     
  
     $("#b2").click(function(){
-        $("h2").toggle(2000, function(){
+        $("firstname").toggle(2000, function(){
             alert("Etat de visibilité changé");
         });
     });
