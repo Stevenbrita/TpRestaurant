@@ -1,5 +1,6 @@
 <?php
 session_start();
+setcookie('pseudo', 'steven', time() + 365*24*3600, null, null, false, true);
 require_once "User.php";
 require_once "DAO.php";
 
